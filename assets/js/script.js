@@ -11,23 +11,29 @@ enterButton.addEventListener('click', () => {
     return;
   }
 
-  //Crucially, no more specific prompt mapping; any word will work
   loader.style.display = 'block';
   setTimeout(() => {
     loader.style.display = 'none';
-    const videoURL = "/assets/Flame.mp4"; // Or any default video path
+    const videoURL = "/assets/Flame.mp4"; // Replace with appropriate path
     videoPlayer.src = videoURL;
     videoPlayer.onloadedmetadata = () => {
       videoContainer.classList.add('visible');
-      videoPlayer.play().catch(error => {
-        console.error("Autoplay failed:", error);
+      videoPlayer.play(); // This will autoplay immediately.
+
+      // Add event listener to prevent autoplay interruption:
+      videoPlayer.addEventListener('ended', () => {
+        videoPlayer.currentTime = 0;  // Rewind to the beginning
+        videoPlayer.play(); // Start playback again immediately
       });
     };
     videoPlayer.onerror = (error) => {
       console.error("Error loading video:", error);
       alert("Error loading video. Check file name and path.");
+      videoContainer.classList.remove('visible'); // Hide if error occurs
+      loader.style.display = 'none'; // Hide loader
     };
-  }, 4000);
+  }, 4000); // 4-second delay
+
 });
 
 promptInput.addEventListener('keyup', (event) => {
@@ -35,11 +41,3 @@ promptInput.addEventListener('keyup', (event) => {
     enterButton.click();
   }
 });
-///This function now uses relative paths (adjust if your videos are in a subfolder)
-//function getVideoURL(prompt) {
-    //const videoUrls = {
-       // "lighting lamp": "/assets/Flame.mp4", // Relative path from your HTML
-        /// Add more prompts and video URLs as needed...
-   // };
-    //return videoUrls[prompt] || null;
-//}

@@ -1,27 +1,30 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    background: #0f0c29;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-    color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #c5c5ec, #a097f9, #0f0c29);
+  background: linear-gradient(to right, #4e4e65,, #302b63, #0f0c29);
+  background: linear-gradient(to left, #3c3c5a, #302b63, #0f0c29);
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 100vh;
+  overflow: hidden;
 }
 
 .main-content {
-    text-align: center;
-    padding: 30px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1;
-    max-width: 90%; /* Adjust this percentage as needed */
-    max-width: 1200px; /*added to limit the max width*/
-    margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);  /* Adjust transparency */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(106, 231, 166, 0.638);
+  max-width: 90%;  /* Responsive width */
+  max-inline-size: 1200px;
+  margin: 0 auto;
+  padding: 80px; /* Slightly less padding */
+  border: 2px solid #555;
+  position: relative; /* Important for z-index */
 }
 
 .header { /* Added a header container for better structure */
@@ -42,7 +45,7 @@ body {
     font-weight: bold;
     margin-block-end: 20px;
     text-shadow: 1px 1px 2px #000;
-    color: #A0D2EB; /* Slightly darker light blue */
+    color: #8fcfef; /* Slightly darker light blue */
 }
 
 .prompt-container {
@@ -59,7 +62,7 @@ body {
     inline-size: 300px;
     font-size: 16px;
     flex-grow: 1;
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background */
+    background-color: rgba(232, 206, 206, 0.1); /* Slightly transparent white background */
     color: #ddd; /* Lighter text color for input */
 }
 
@@ -89,13 +92,13 @@ body {
 
 .loader-container {
   position: relative;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .ball {
-  width: 20px;
-  height: 20px;
+  inline-size: 20px;
+  block-size: 20px;
   background-color: #f0f0f0;
   border-radius: 50%;
   display: inline-block;
@@ -139,7 +142,7 @@ body {
 }
 
 .video-container video {
-    width: 100%;
+    inline-size: 100%;
     /* Removed max-width and max-height for full container usage */
 }
 
@@ -147,8 +150,8 @@ body {
 /*Added for screen reader accessibility*/
 .sr-only {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
