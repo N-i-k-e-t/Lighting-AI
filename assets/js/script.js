@@ -32,7 +32,7 @@ enterButton.addEventListener('click', () => {
       videoContainer.classList.remove('visible'); // Hide if error occurs
       loader.style.display = 'none'; // Hide loader
     };
-  }, 4000); // 4-second delay
+  }, 5000); // 5-second delay
 
 });
 
